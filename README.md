@@ -30,5 +30,5 @@ https://github.com/user-attachments/assets/4c53f88e-f44d-45df-81c7-ec3bafc77ec2
 
 ## License
 
-Code under the `hunyuan_model` directory is modified from [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) and follows their license.
+Much of the code is based on [musubi-tuner](https://github.com/kohya-ss/musubi-tuner). Code under the `hunyuan_model` directory is modified from [HunyuanVideo](https://github.com/Tencent/HunyuanVideo) and follows their license.
 Other code is under the Apache License 2.0. Some code is copied and modified from musubi-tuner, k-diffusion and Diffusers.
