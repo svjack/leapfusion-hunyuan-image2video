@@ -1,7 +1,7 @@
 # Leapfusion Hunyuan Image-to-Video
-Proper readme incoming...
+**Show your support!** You can try HunyuanVideo free with some of our custom spice [here](https://leapfusion.ai/). Supporting LeapFusion enables us to do more open source releases like this in the future!
 
-Training code can be found [Here](https://github.com/AeroScripts/musubi-tuner-img2video)
+Training code can be found [Here](https://github.com/AeroScripts/musubi-tuner-img2video).
 
 # Usage
 First, Download the hunyuan weights as explained [here](https://github.com/AeroScripts/musubi-tuner-img2video/tree/main?tab=readme-ov-file#use-the-official-hunyuanvideo-model) and get the image2video lora weights from [here](https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/blob/main/img2vid.safetensors). Then run the following command to encode an image: (ex. input_image.png)
