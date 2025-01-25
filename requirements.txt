@@ -16,3 +16,6 @@ voluptuous==0.15.2
 # ascii-magic==2.3.0
 # matplotlib==3.10.0
 # tensorboard
+
+moviepy==1.0.3
+httpx[socks]
