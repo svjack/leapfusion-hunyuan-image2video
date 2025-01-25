@@ -57,11 +57,40 @@ huggingface-cli download openai/clip-vit-large-patch14 --local-dir ./text_encode
     ├──...
 ```
 
+```bash
+wget https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/resolve/main/img2vid.safetensors -O img2vid.safetensors
+huggingface-cli download Comfy-Org/HunyuanVideo_repackaged --include "split_files/text_encoders/*" --local-dir text_encoders
+```
+
 **Show your support!** You can try HunyuanVideo free with some of our custom spice [here](https://leapfusion.ai/). Supporting LeapFusion enables us to do more open source releases like this in the future!
 
 Training code can be found [Here](https://github.com/AeroScripts/musubi-tuner-img2video).
 
 # Usage
+
+- gen target_latent.pt
+```bash
+sudo chmod 777 /root
+python encode_image.py --vae ckpts/hunyuan-video-t2v-720p/vae/pytorch_model.pt --vae_chunk_size 32 --vae_tiling --image "老佛爷1.jpg"
+```
+
+
+![老佛爷1](https://github.com/user-attachments/assets/ebadf762-f8ef-4699-a2a8-84e341ec55c7)
+
+- gen video
+```bash
+python generate.py --fp8 --video_size 320 512 --infer_steps 30 --save_path ./samples/ --output_type both \
+ --dit ckpts/hunyuan-video-t2v-720p/transformers/mp_rank_00_model_states.pt --attn_mode sdpa --split_attn --vae ckpts/hunyuan-video-t2v-720p/vae/pytorch_model.pt \
+ --vae_chunk_size 32 --vae_spatial_tile_sample_min_size 128 --text_encoder1 text_encoders/split_files/text_encoders/llava_llama3_fp16.safetensors  \
+ --text_encoder2 text_encoders/split_files/text_encoders/clip_l.safetensors --lora_multiplier 1.0 --lora_weight img2vid.safetensors --video_length 129 --prompt "" --seed 123
+```
+
+
+
+
+https://github.com/user-attachments/assets/35e4b5ce-340a-4abe-be7a-bfcbe39830ad
+
+
 First, Download the hunyuan weights as explained [here](https://github.com/AeroScripts/musubi-tuner-img2video/tree/main?tab=readme-ov-file#use-the-official-hunyuanvideo-model) and get the image2video lora weights from [here](https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/blob/main/img2vid.safetensors). Then run the following command to encode an image: (ex. input_image.png)
 ```bash
 wget https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/resolve/main/img2vid.safetensors -O img2vid.safetensors
