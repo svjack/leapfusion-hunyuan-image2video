@@ -1,4 +1,62 @@
 # Leapfusion Hunyuan Image-to-Video
+
+## Installation
+
+Create a virtual environment and install PyTorch and torchvision matching your CUDA version. Verified to work with version 2.5.1.
+
+```bash
+sudo apt-get update && sudo apt-get install git-lfs ffmpeg cbm
+
+conda create -n musubi-tuner python=3.10
+conda activate musubi-tuner
+pip install ipykernel
+python -m ipykernel install --user --name musubi-tuner --display-name "musubi-tuner"
+
+pip install torch torchvision
+
+#pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+```
+
+Install the required dependencies using the following command:
+
+```bash
+git clone https://github.com/svjack/leapfusion-hunyuan-image2video && cd leapfusion-hunyuan-image2video
+pip install -r requirements.txt
+```
+
+Optionally, you can use FlashAttention and SageAttention (see [SageAttention Installation](#sageattention-installation) for installation instructions).
+
+Additionally, install `ascii-magic` (used for dataset verification), `matplotlib` (used for timestep visualization), and `tensorboard` (used for logging training progress) as needed:
+
+```bash
+pip install ascii-magic matplotlib tensorboard huggingface_hub datasets
+pip install moviepy==1.0.3
+pip install sageattention==1.0.6
+```
+
+### Model Download
+
+Download the model following the [official README](https://github.com/Tencent/HunyuanVideo/blob/main/ckpts/README.md) and place it in your chosen directory with the following structure:
+
+```bash
+huggingface-cli download tencent/HunyuanVideo --local-dir ./ckpts
+cd ckpts
+huggingface-cli download xtuner/llava-llama-3-8b-v1_1-transformers --local-dir ./llava-llama-3-8b-v1_1-transformers
+wget https://raw.githubusercontent.com/Tencent/HunyuanVideo/refs/heads/main/hyvideo/utils/preprocess_text_encoder_tokenizer_utils.py
+python preprocess_text_encoder_tokenizer_utils.py --input_dir llava-llama-3-8b-v1_1-transformers --output_dir text_encoder
+huggingface-cli download openai/clip-vit-large-patch14 --local-dir ./text_encoder_2
+```
+
+```
+  ckpts
+    ├──hunyuan-video-t2v-720p
+    │  ├──transformers
+    │  ├──vae
+    ├──text_encoder
+    ├──text_encoder_2
+    ├──...
+```
+
 **Show your support!** You can try HunyuanVideo free with some of our custom spice [here](https://leapfusion.ai/). Supporting LeapFusion enables us to do more open source releases like this in the future!
 
 Training code can be found [Here](https://github.com/AeroScripts/musubi-tuner-img2video).
