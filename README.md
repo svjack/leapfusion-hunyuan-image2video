@@ -63,6 +63,10 @@ Training code can be found [Here](https://github.com/AeroScripts/musubi-tuner-im
 
 # Usage
 First, Download the hunyuan weights as explained [here](https://github.com/AeroScripts/musubi-tuner-img2video/tree/main?tab=readme-ov-file#use-the-official-hunyuanvideo-model) and get the image2video lora weights from [here](https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/blob/main/img2vid.safetensors). Then run the following command to encode an image: (ex. input_image.png)
+```bash
+wget https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/resolve/main/img2vid.safetensors -O img2vid.safetensors
+```
+
 ```
 python encode_image.py --vae hunyuan-video-t2v-720p/vae/pytorch_model.pt --vae_chunk_size 32 --vae_tiling --image ./input_image.png
 ```
