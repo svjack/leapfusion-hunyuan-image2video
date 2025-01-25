@@ -91,6 +91,11 @@ python generate.py --fp8 --video_size 320 512 --infer_steps 30 --save_path ./sam
 https://github.com/user-attachments/assets/35e4b5ce-340a-4abe-be7a-bfcbe39830ad
 
 
+<br/>
+<br/>
+<br/>
+
+
 First, Download the hunyuan weights as explained [here](https://github.com/AeroScripts/musubi-tuner-img2video/tree/main?tab=readme-ov-file#use-the-official-hunyuanvideo-model) and get the image2video lora weights from [here](https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/blob/main/img2vid.safetensors). Then run the following command to encode an image: (ex. input_image.png)
 ```bash
 wget https://huggingface.co/leapfusion-image2vid-test/image2vid-512x320/resolve/main/img2vid.safetensors -O img2vid.safetensors
