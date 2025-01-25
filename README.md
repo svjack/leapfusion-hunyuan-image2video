@@ -68,6 +68,9 @@ Training code can be found [Here](https://github.com/AeroScripts/musubi-tuner-im
 
 # Usage
 
+### 以下是《苍穹之昴》中以“老佛爷”为例的结果。
+### Below are the results using "Laoye" (Old Buddha) as an example in "The Firmament of the Pleiades".
+
 - gen target_latent.pt
 ```bash
 sudo chmod 777 /root
